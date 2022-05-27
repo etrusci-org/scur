@@ -1,6 +1,8 @@
 import { Scur } from '../js/scur.js'
 
-let expect = '=0WYpxGdvpTauZ2bAVGeh1GcsVmLvJ3Z/MXdipWZjRXPIVGbs9WJyAzYyVXZsViMwc3byxGZ'
+Scur.s = 'your_secret_extra_string'
+
+let expect = '=cmbpJHdz9VYyRHel9FdlJ3YlN3XyV3b51WYpxGdvpTauZ2bAVGeh1GcsVmLvJ3Z/MXdipWZjRXPIVGbs9WJyAzYyVXZsViMwc3byxGZ'
 let output = Scur.ob('mailto:info@example.org?subject=Hello%20cruel%20world')
 
 console.log('expect  :', expect)
