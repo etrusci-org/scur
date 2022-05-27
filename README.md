@@ -16,7 +16,7 @@ Then use `Scur.deobElements()` to add `href` attributes with deobscured email ad
 <a class="scur" data-hash="=0WYpxGdvpDdlNHdu8mblBUZ4FWbwxWZu8mcndDN1Q2MygTZkJzN3QjNjFGO4AzMjRjYhFTN3EDZkdzM">Email<noscript> (JavaScript required)</noscript></a>
 
 <!-- After deobElements() -->
-<a class="scur" href="mailto:test.one@example.org">Email<noscript> (JavaScript required)</noscript></a>
+<a href="mailto:test.one@example.org">Email<noscript> (JavaScript required)</noscript></a>
 ```
 
 ---
@@ -34,14 +34,21 @@ Scur.s = 'your own salt string'
 
 // Obscure
 // returns: ==QbhlGb09mOp5mZvBUZ4FWbwxWZu8mcn9zc1JmalNGd9gUZsx2blIDMjJXdlxWJyAzdvJHbkl3b1JHIvdnbgMXYsRHIzRncp52Z
-let foo = Scur.ob('mailto:info@example.org?subject=Hello%20cruel%20world')
+Scur.ob('mailto:info@example.org?subject=Hello%20cruel%20world')
 
 // Deobscure
 // returns: mailto:info@example.org?subject=Hello%20cruel%20world
-let foo = Scur.deob('==QbhlGb09mOp5mZvBUZ4FWbwxWZu8mcn9zc1JmalNGd9gUZsx2blIDMjJXdlxWJyAzdvJHbkl3b1JHIvdnbgMXYsRHIzRncp52Z')
+Scur.deob('==QbhlGb09mOp5mZvBUZ4FWbwxWZu8mcn9zc1JmalNGd9gUZsx2blIDMjJXdlxWJyAzdvJHbkl3b1JHIvdnbgMXYsRHIzRncp52Z')
 
 // Process elements on page
 // default selector = .scur
 Scur.deobElements()
 Scur.deobElements('.customSelector')
 ```
+
+
+---
+
+## CDN
+
+- scur.js: <https://cdn.jsdelivr.net/gh/etrusci-org/scur/js/scur.js>
