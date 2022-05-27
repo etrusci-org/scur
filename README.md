@@ -52,3 +52,4 @@ Scur.deobElements('.customSelector')
 ## CDN
 
 - scur.js: <https://cdn.jsdelivr.net/gh/etrusci-org/scur/js/scur.js>
+- scur.min.js: <https://cdn.jsdelivr.net/gh/etrusci-org/scur/js/scur.min.js>
