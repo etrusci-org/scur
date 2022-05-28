@@ -1,51 +1,63 @@
+
 # Scur
 
-Make it a little bit harder for bots to farm your email address (or any string).
+Make it a little bit harder for bots to farm your email address (or any string) on your website.
 
 ---
 
 ## Idea
 
-Don't put your plain text email address into the source code. Instead lazy load your email address (for clients that have JavaScript enabled).
-
-Use anchor elements without `href` attribute, add obscured email address hash in `data-hash`.
-Then use `Scur.deobElements()` to add `href` attributes with deobscured email addresses.
-
-```html
-<!-- Before deobElements() -->
-<a class="scur" data-hash="=0WYpxGdvpDdlNHdu8mblBUZ4FWbwxWZu8mcndDN1Q2MygTZkJzN3QjNjFGO4AzMjRjYhFTN3EDZkdzM">Email<noscript> (JavaScript required)</noscript></a>
-
-<!-- After deobElements() -->
-<a href="mailto:test.one@example.org">Email<noscript> (JavaScript required)</noscript></a>
-```
+Don't put your plain text email address in your page source. Instead lazy load your email address (for clients that have JavaScript enabled).
 
 ---
 
 ## Usage
 
-Also see [test/deobElements.html](test/deobElements.html).
+Create an obscured string with `Scur.ob()`.
 
-```js
-// Import script
-import { Scur } from './js/scur.js'
-
-// Optionally set a new salt string
-Scur.s = 'your own salt string'
-
-// Obscure
-// returns: ==QbhlGb09mOp5mZvBUZ4FWbwxWZu8mcn9zc1JmalNGd9gUZsx2blIDMjJXdlxWJyAzdvJHbkl3b1JHIvdnbgMXYsRHIzRncp52Z
-Scur.ob('mailto:info@example.org?subject=Hello%20cruel%20world')
-
-// Deobscure
-// returns: mailto:info@example.org?subject=Hello%20cruel%20world
-Scur.deob('==QbhlGb09mOp5mZvBUZ4FWbwxWZu8mcn9zc1JmalNGd9gUZsx2blIDMjJXdlxWJyAzdvJHbkl3b1JHIvdnbgMXYsRHIzRncp52Z')
-
-// Process elements on page
-// default selector = .scur
-Scur.deobElements()
-Scur.deobElements('.customSelector')
+```javascript
+Scur.ob('mailto:info@example.org')
+Scur.ob('just some text for a div')
 ```
 
+Then add elements to your page source.
+
+```html
+<a data-scur="OBSCURED_STRING_HERE">Email<noscript> (JavaScript required)</noscript></a>
+<div data-scur="OBSCURED_STRING_HERE">Just text<noscript> (JavaScript required)</noscript></div>
+```
+
+Finally when your page is fully loaded, just run `Scur.deobElements()` once.
+For anchor elements a `href` attribute will be added with the deobscured string as its value.
+For other elements the deobscured string will replace `innerHTML`.
+
+```html
+<!-- What the client sees after Scur.deobElements() was run: -->
+<a href="mailto:info@example.org">Email<noscript> (JavaScript required)</noscript></a>
+<div>just some text for a div</div>
+```
+
+---
+
+## Attributes / Methods
+
+```javascript
+// Bonus salt string to add before obscuring.
+// If you change this the output of Scur.ob() will be different.
+Scur.s: string
+
+// Obscure a string.
+Scur.ob(data: string): string
+
+// Deobscure a string.
+Scur.deob(data: string): string
+
+// Deobscure HTML elements.
+Scur.deobElements(): void
+
+// Reverse a string.
+Scur._r(data: string): string
+```
 
 ---
 

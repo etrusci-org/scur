@@ -9,21 +9,21 @@ export const Scur: ScurInterface = {
         return this._r(atob(this._r(data))).replace(this.s, '')
     },
 
-    deobElements(selector='.scur') {
-        let nodeList = document.querySelectorAll(selector)
+    deobElements() {
+        let nodeList = document.querySelectorAll('[data-scur]')
         if (nodeList instanceof NodeList) {
             nodeList.forEach(node => {
-                if (node instanceof HTMLAnchorElement) {
-                    if ('hash' in node.dataset && node.dataset['hash'] !== undefined) {
-                        node.setAttribute('href', Scur.deob(node.dataset['hash']))
-                        delete node.dataset['hash']
-                        if (node.classList.length > 1) {
-                            node.classList.remove(selector.substring(1))
-                        }
-                        else {
-                            node.removeAttribute('class')
-                        }
+                if (
+                    node instanceof HTMLElement &&
+                    node.dataset['scur'] !== undefined
+                ) {
+                    if (node instanceof HTMLAnchorElement) {
+                        node.setAttribute('href', Scur.deob(node.dataset['scur']))
                     }
+                    else {
+                        node.innerHTML = Scur.deob(node.dataset['scur'])
+                    }
+                    delete node.dataset['scur']
                 }
             })
         }

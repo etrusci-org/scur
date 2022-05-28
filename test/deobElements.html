@@ -1,14 +1,20 @@
-<!DOCTYPE html><html><head><title>Scur deobElements()</title></head><body>
+<!DOCTYPE html><html><head><title>Scur.deobElements()</title></head><body>
 
+    <!-- test.zero@example.org -->
+    <div data-scur="=QXZzRnL6VmcvBUZ4FWbwxWZu8mcndDN1Q2MygTZkJzN3QjNjFGO4AzMjRjYhFTN3EDZkdzM">Email<noscript> (JavaScript required)</noscript></div>
 
-    <a class="scur" data-hash="=0WYpxGdvpDdlNHdu8mblBUZ4FWbwxWZu8mcndDN1Q2MygTZkJzN3QjNjFGO4AzMjRjYhFTN3EDZkdzM">Email<noscript> (JavaScript required)</noscript></a><br>
-    <a class="scur yourExtraClassesWillBePreserved" data-hash="=0WYpxGdvpDdlNHduQ3dvBUZ4FWbwxWZu8mcndDN1Q2MygTZkJzN3QjNjFGO4AzMjRjYhFTN3EDZkdzM">Email<noscript> (JavaScript required)</noscript></a><br>
-    <a class="customSelector" data-hash="==QbhlGb09mO0V2c05CdoJXZlBUZ4FWbwxWZu8mcndDN1Q2MygTZkJzN3QjNjFGO4AzMjRjYhFTN3EDZkdzM">Email<noscript> (JavaScript required)</noscript></a>
+    <!-- mailto:test.one@example.org -->
+    <a data-scur="=0WYpxGdvpDdlNHdu8mblBUZ4FWbwxWZu8mcndDN1Q2MygTZkJzN3QjNjFGO4AzMjRjYhFTN3EDZkdzM">Email<noscript> (JavaScript required)</noscript></a><br>
+
+    <!-- mailto:test.two@example.org -->
+    <a data-scur="=0WYpxGdvpDdlNHduQ3dvBUZ4FWbwxWZu8mcndDN1Q2MygTZkJzN3QjNjFGO4AzMjRjYhFTN3EDZkdzM">Email<noscript> (JavaScript required)</noscript></a><br>
+
+    <!-- mailto:test.three@example.org -->
+    <a data-scur="==QbhlGb09mO0V2c05CdoJXZlBUZ4FWbwxWZu8mcndDN1Q2MygTZkJzN3QjNjFGO4AzMjRjYhFTN3EDZkdzM">Email<noscript> (JavaScript required)</noscript></a>
 
     <script type="module">
         import { Scur } from '../js/scur.js'
         Scur.deobElements()
-        Scur.deobElements('.customSelector')
     </script>
 
 
