@@ -1,5 +1,5 @@
 export const Scur = {
-    s: '745d328ed27746ca8803c4ba1571dd73',
+    s: '745d328ed27746ca8803c4ba1571dd731418365f67fe41c7ad9765981fcac618',
     ob(data) {
         return this._r(btoa(this._r(data + this.s)));
     },
