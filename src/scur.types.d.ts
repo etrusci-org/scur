@@ -1,5 +1,5 @@
 interface ScurInterface {
-    // Bonus salt string to add before obscuring.
+    // Salt string
     s: string
 
     // Obscure a string
